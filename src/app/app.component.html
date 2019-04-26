@@ -1,0 +1,32 @@
+<body>
+<div>
+  <table class="table table-inbox table-hover">
+    <tbody>
+
+      <tr class="unread"  *ngFor="let x of posts | async ;let y of items" (click)="todo(x)" >
+        <ul id="row1">
+        <ol>
+          
+          Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
+        </ol>
+        <ol>
+            Duration  : {{x.duration}} min
+        </ol>
+        <ol>
+            name : {{x.username}} 
+        </ol>
+        <ol>
+            Accepted : {{x.Accepted}} 
+        </ol>
+          </ul>
+        </tr>
+        
+      
+
+  </tbody>
+  </table>
+</div>
+</body>
+
+
+<router-outlet></router-outlet>
