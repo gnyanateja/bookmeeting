@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseService} from './firebase.service';
 import {Router} from '@angular/router';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore'; 
 import {Observable} from 'rxjs';
@@ -91,7 +90,7 @@ starting() {
   );
 
 
-  
+
 
 }
 
