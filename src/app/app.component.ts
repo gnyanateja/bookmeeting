@@ -39,7 +39,6 @@ export class AppComponent implements OnInit{
 
   constructor(
     private afs:AngularFirestore,
-    public firebaseService: FirebaseService,
     private router: Router
   ) {
   }
