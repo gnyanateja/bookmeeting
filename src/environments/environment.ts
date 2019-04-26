@@ -4,7 +4,6 @@
 
  // Initialize Firebase
  export const environment = {
-  production: false,
   firebase : {
     apiKey: "AIzaSyCsiTkDAW2cFcRYPDtZHYGxnadt3xl-ZoI",
     authDomain: "appointmenter-10074.firebaseapp.com",
