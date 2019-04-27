@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import {FormsModule} from '@angular/forms';
+import { TodoComponent } from './todo/todo.component';
 export const environment = {
   production: false,
   firebase : {
@@ -23,7 +24,8 @@ export const environment = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

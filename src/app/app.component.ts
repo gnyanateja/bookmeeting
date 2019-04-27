@@ -89,6 +89,19 @@ export class AppComponent implements OnInit {
 
   }
 
+
+  next() {
+    this.router.navigate(['/todo']);
+  }
+
+
+
+
+
+
+
+
+
   starting() {
     // this.postsCol= this.afs.collection('appointments');
     // this.posts=this.postsCol.valueChanges();
