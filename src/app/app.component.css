@@ -1,9 +1,12 @@
 #row1{
     position: relative;
     align-content: center;
-    font-size: 130%;   
+    font-size: 130%;
+    color: aliceblue;   
 }
 
 body{
+   
     overflow-x: hidden;
+    background-color: black;
 }

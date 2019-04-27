@@ -3,8 +3,8 @@
   <table class="table table-inbox table-hover">
     <tbody>
 
-      <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" (click)="todo(x)" >
-        <ul [ngStyle]="{'background-color': x.Accepted? 'green' : 'red'}">
+      <tr class="unread" id="row1"   *ngFor="let x of posts | async ;let y of items" (click)="todo(x)" >
+        <ul [ngStyle]="{'background-color': x.Accepted? '#F80000' : '#0000FF'}">
         <ol>
           
           Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
