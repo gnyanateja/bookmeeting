@@ -1,11 +1,13 @@
 <body>
-<div>
-    <h4 id="tt">AMuDA appoiNtmeNt maNager</h4>
+<div id="tt">
+    <h4>AMuDA appointment manager</h4>
+</div>
+<div id="tt1">
   <table class="table table-inbox table-hover">
     <tbody>
 
       <tr class="unread" id="row1"   *ngFor="let x of posts | async ;let y of items" (click)="todo(x)" >
-        <ul [ngStyle]="{'background-color': x.Accepted? '#F80000' : '#0000FF'}">
+        <ul [ngStyle]="{'background-color': x.Accepted? '#0000FF':'#F80000'}">
         <ol>
           
           Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
@@ -14,7 +16,7 @@
             Duration  : {{x.duration}} min
         </ol>
         <ol>
-            name : {{x.username}} 
+            Name : {{x.username}} 
         </ol>
         <ol>
             Accepted : {{x.Accepted}} 
