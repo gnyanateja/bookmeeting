@@ -20,6 +20,8 @@ export interface Feat{
 
 export class TodoComponent implements OnInit {
   composeForm: FormGroup;
+  composeForm1: FormGroup;
+
   constructor(
     private afs: AngularFirestore,
     private router: Router,
@@ -27,6 +29,9 @@ export class TodoComponent implements OnInit {
       this.composeForm = new FormGroup({
         starttime: new FormControl(null, Validators.required),
         endtime: new FormControl(null, Validators.required)
+      });
+      this.composeForm1 = new FormGroup({
+        duration: new FormControl(null,Validators.required)
       });
      }
      featCol:AngularFirestoreCollection<Feat>;
@@ -36,6 +41,9 @@ export class TodoComponent implements OnInit {
      dndd:boolean;
      isValid(controlName) {
       return this.composeForm.get(controlName).invalid && this.composeForm.get(controlName).touched;
+    }
+    isValid1(controlName) {
+      return this.composeForm1.get(controlName).invalid && this.composeForm1.get(controlName).touched;
     }
   
   ngOnInit() {
@@ -75,6 +83,15 @@ export class TodoComponent implements OnInit {
      }
   }
 
+  addtime1(){
+    console.log(this.composeForm1.value);
+     if(this.composeForm1.valid) {
+       this.adddnd();
+     console.log(this.composeForm1.value.starttime);
+       this.afs.collection('features').doc('doc').update({dnd_duration:this.composeForm1.value.duration});
+     }
+  }
+
   adddnd(){
     this.afs.collection('features').doc('doc').ref.get()
       .then((doc)=>{
@@ -92,6 +109,10 @@ export class TodoComponent implements OnInit {
 
   removetime(){
     this.afs.collection('features').doc('doc').update({starttime:"",duration:0});
+  }
+
+  removetime1(){
+    this.afs.collection('features').doc('doc').update({dnd_duration:0});
   }
 
 }
