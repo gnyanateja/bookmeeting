@@ -53,7 +53,7 @@ export class TodoComponent implements OnInit {
       //  console.log(this.feat);
       this.startthis();
      
-
+      console.log(this.duration);
       
 
   }
@@ -63,9 +63,10 @@ export class TodoComponent implements OnInit {
     this.afs.collection('features').doc('doc').ref.get()
     .then((doc)=>{
       if(doc.exists){
-        this.composeForm.value.starttime=doc.data().starttime;
+        
         this.duration=doc.data().duration;
-        console.log(this.duration);
+        this.stime=doc.data().starttime;
+        console.log(this.duration+"hi");
         document.getElementById("inputPassword1").setAttribute("endtime","20");
         console.log(document.getElementById("inputPassword1").getAttribute("endtime"));
       }

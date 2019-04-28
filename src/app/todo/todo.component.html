@@ -14,13 +14,13 @@
             <div class="form-group" [formGroup]="composeForm">
               <label class="col-lg-2 control-label">Start time</label>
               <div class="col-lg-10">
-                <input type="time" placeholder="" formControlName="starttime" id="inputEmail1" name="starttime" value="" class="form-control">
+                <input type="time" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
                 <span *ngIf="isValid('starttime')">please enter the entertime</span>
               </div>
 
               <label class="col-lg-2 control-label">duration(min)</label>
               <div class="col-lg-10">
-                <input type="number" placeholder="" formControlName="endtime" id="inputPassword1" name="endtime" value="this.duration"  class="form-control">
+                <input type="number" placeholder="" formControlName="endtime" [(ngModel)]="duration" id="inputPassword1" name="endtime" value="this.duration"  class="form-control">
                 <span *ngIf="isValid('endtime')">please enter the duration</span>
 
               </div>
