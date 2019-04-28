@@ -5,11 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {RouterModule, Routes} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {FormsModule} from '@angular/forms';
 import { TodoComponent } from './todo/todo.component';
+import { ApptComponent } from './appt/appt.component';
+
+
+
+
+
+const routes: Routes = [
+  {path: 'home', component: ApptComponent},
+  {path: 'todo', component: TodoComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'}, // pathmatch is used for checking exact match
+];
+
+
 export const environment = {
   production: false,
   firebase : {
@@ -25,7 +39,8 @@ export const environment = {
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    ApptComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +48,8 @@ export const environment = {
  	  AngularFirestoreModule,
     AppRoutingModule,
     AngularFireDatabaseModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

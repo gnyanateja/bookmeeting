@@ -1,3 +1,58 @@
-<p>
-  todo works!
-</p>
+<body>
+  <div>
+    <button data-toggle="modal" id="id1" data-target="#mymodal">Incoginto</button>
+
+    <div class="modal fade" id="mymodal" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+      style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h4 id="m1" class="modal-title">Incoginto</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" [formGroup]="composeForm">
+              <label class="col-lg-2 control-label">Start time</label>
+              <div class="col-lg-10">
+                <input type="time" placeholder="" formControlName="starttime" id="inputEmail1" name="starttime" value="" class="form-control">
+                <span *ngIf="isValid('starttime')">please enter the entertime</span>
+              </div>
+
+              <label class="col-lg-2 control-label">duration(min)</label>
+              <div class="col-lg-10">
+                <input type="number" placeholder="" formControlName="endtime" id="inputPassword1" name="endtime" value="this.duration"  class="form-control">
+                <span *ngIf="isValid('endtime')">please enter the endtime</span>
+
+              </div>
+              <br>
+              <tr>
+                <td>
+                  <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="addtime()"
+                    type="submit">Add</button>
+                </td>
+
+                <td>
+                  <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="removetime()"
+                    type="submit">Remove</button>
+                </td>
+              </tr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <button id="id2" (click)="adddnd()" [ngStyle]="{'background-color': dndd? 'rgb(231, 73, 104)':'rgb(0, 116, 0)'}">Do
+      not Disturb </button>
+  </div>
+  
+
+
+
+
+
+</body>

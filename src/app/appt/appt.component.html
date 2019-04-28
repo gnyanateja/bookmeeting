@@ -1,0 +1,33 @@
+<body>
+    <div>
+      <button id="tt2" (click)="next()">AMuDA appointment manager</button>
+    </div>
+    <div id="tt1">
+      <table class="table table-inbox table-hover">
+        <tbody>
+    
+          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;let y of items" (click)="todo(x)" >
+            <ul [ngStyle]="{'background-color': x.Accepted? '#0000FF':'#F80000'}">
+            <ol>
+              
+              Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
+            </ol>
+            <ol>
+                Duration  : {{x.duration}} min
+            </ol>
+            <ol>
+                Name : {{x.username}} 
+            </ol>
+            <ol>
+                Accepted : {{x.Accepted}} 
+            </ol>
+              </ul>
+            </tr>
+            
+          
+    
+      </tbody>
+      </table>
+    </div>
+    </body>
+    
