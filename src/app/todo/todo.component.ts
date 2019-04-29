@@ -96,10 +96,7 @@ export class TodoComponent implements OnInit {
   
           this.dndd=true;
           this.afs.collection('features').doc('doc').update({dnd:this.dndd});
-          
-      
-    console.log(this.dndd);
-    this.startthis();
+  
   }
 
 
