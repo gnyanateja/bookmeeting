@@ -70,20 +70,13 @@ export class ApptComponent implements OnInit {
       if (x.Accepted == true) {
         this.afs
           .collection("appointments")
-          .doc(x.id)
-          .set({
-            Accepted: false, day: x.day, duration: x.duration,
-            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year
-          });
+          .doc(x.id).update({Accepted:false});
       }
       else {
         this.afs
           .collection("appointments")
-          .doc(x.id)
-          .set({
-            Accepted: true, day: x.day, duration: x.duration,
-            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year
-          });
+          .doc(x.id).update({Accepted:true});
+          
       }
       this.n = 0;
       this.starting();
@@ -119,7 +112,7 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments', ref => ref.where("StartTime",">=",new Date()));
+    this.postsCol = this.afs.collection('appointments', ref => ref.where("StartedAt",">=",new Date()));
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         console.log(d);
