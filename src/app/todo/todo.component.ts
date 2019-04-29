@@ -39,6 +39,7 @@ export class TodoComponent implements OnInit {
      stime:string;
      duration:number;
      dndd:boolean;
+     dndd_dur:number;
      isValid(controlName) {
       return this.composeForm.get(controlName).invalid && this.composeForm.get(controlName).touched;
     }
@@ -65,6 +66,8 @@ export class TodoComponent implements OnInit {
         
         this.duration=doc.data().duration;
         this.stime=doc.data().starttime;
+        this.dndd=doc.data().dnd;
+        this.dndd_dur=doc.data().dnd_duration;
       }
     });
     
@@ -85,19 +88,16 @@ export class TodoComponent implements OnInit {
        this.adddnd();
      console.log(this.composeForm1.value.starttime);
        this.afs.collection('features').doc('doc').update({dnd_duration:this.composeForm1.value.duration});
+       
      }
   }
 
   adddnd(){
-    this.afs.collection('features').doc('doc').ref.get()
-      .then((doc)=>{
-        if(doc.exists){
-         
-          this.dndd=doc.data().dnd;
-          this.afs.collection('features').doc('doc').update({dnd:!this.dndd});
-
-        }
-      })
+  
+          this.dndd=true;
+          this.afs.collection('features').doc('doc').update({dnd:this.dndd});
+          
+      
     console.log(this.dndd);
     this.startthis();
   }
@@ -109,6 +109,8 @@ export class TodoComponent implements OnInit {
 
   removetime1(){
     this.afs.collection('features').doc('doc').update({dnd_duration:0});
+    this.afs.collection('features').doc('doc').update({dnd:false});
+    this.dndd=false;
   }
 
 }

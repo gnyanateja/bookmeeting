@@ -11,10 +11,11 @@
     position: relative;
     box-sizing: content-box;
     color: aliceblue;
+    
   }
 
   #bt2{
-    background-color: rgb(255, 70, 70);
+    background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
     left: 10%;

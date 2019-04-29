@@ -96,10 +96,16 @@ export class ApptComponent implements OnInit {
     this.router.navigate(['/todo']);
   }
 
+  starttimer(){
 
 
+      
+  }
 
 
+  endtimer(){
+
+  }
 
 
 

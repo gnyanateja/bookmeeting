@@ -24,14 +24,16 @@
             <ol>
                 Accepted : {{x.Accepted}} 
             </ol>
-            
-             <ol>
-              <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="addtime1()"
+           
+             <ol *ngIf="x.Accepted!=false">
+                <hr>
+              <button id="bt1" class="btn btn-send" aria-hidden="true"  (click)="starttimer()"
               type="submit">Start</button>
              
-                <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="removetime1()"
+                <button id="bt2" class="btn btn-send" aria-hidden="true"  (click)="endtimer()"
                   type="submit">End</button>
-                  <br>
+                 
+                  <hr>
               </ol>
               
               </ul>

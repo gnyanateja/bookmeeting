@@ -46,7 +46,7 @@
 
 
   <div>
-    <button id="id2" data-toggle="modal" data-target="#mymodal1" [ngStyle]="{'background-color': dndd? 'rgb(231, 73, 104)':'rgb(0, 116, 0)'}">Do
+    <button id="id2" data-toggle="modal" data-target="#mymodal1" [(ngModel)]="dndd" [ngStyle]="{'background-color': dndd? 'rgb(255, 0, 34)':'rgb(0, 116, 0)'}">Do
       not Disturb </button>
   
     <div class="modal fade" id="mymodal1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
@@ -55,13 +55,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-            <h4 id="m1" class="modal-title">Incoginto</h4>
+            <h4 id="m1" class="modal-title">Don't Disturb</h4>
           </div>
           <div class="modal-body">
             <div class="form-group" [formGroup]="composeForm1">
               <label class="col-lg-2 control-label">duration(min)</label>
               <div class="col-lg-10">
-                <input type="number" placeholder="" formControlName="duration" id="inputPassword2" name=""  class="form-control">
+                <input type="number" placeholder="" formControlName="duration" [(ngModel)]="dndd_dur" id="inputPassword2" name=""  class="form-control">
                 <span *ngIf="isValid1('duration')">please enter the duration</span>
 
               </div>
