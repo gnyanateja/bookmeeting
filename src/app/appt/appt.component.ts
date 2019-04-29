@@ -112,7 +112,7 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments', ref => ref.where("StartedAt",">=",new Date()));
+    this.postsCol = this.afs.collection('appointments', ref => ref);
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         console.log(d);
