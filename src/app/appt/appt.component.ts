@@ -41,6 +41,7 @@ export class ApptComponent implements OnInit {
   title = 'appoint';
   items=new Array();
   n = 0;
+  imp=0;
 
   postsCol: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
@@ -71,19 +72,15 @@ export class ApptComponent implements OnInit {
         this.afs
           .collection("appointments")
           .doc(x.id)
-          .set({
-            Accepted: false, day: x.day, duration: x.duration,
-            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year,isEnded: x.isEnded,name:x.name,Endtime:x.Endtime,StartTime:x.StartTime
-          });
+          .update({
+            Accepted: false});
       }
       else {
         this.afs
           .collection("appointments")
           .doc(x.id)
-          .set({
-            Accepted: true, day: x.day, duration: x.duration,
-            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year,isEnded: x.isEnded,name:x.name,Endtime:x.Endtime,StartTime:x.StartTime
-          });
+          .update({
+            Accepted: true});
       }
       this.n = 0;
       this.starting();
@@ -97,18 +94,25 @@ export class ApptComponent implements OnInit {
   }
 
   starttimer(id){
-
-    this.afs.collection('appointments').doc(id).update({startedAt:new Date()});
+    
+    this.afs.collection('appointments').doc(id).update({startedAt:new Date(),endtime:1});
+    this.starting();
   }
 
 
   endtimer(id){
-    this.afs.collection('appointments').doc(id).update({endedAt:new Date()});
-    this.afs.collection('appointments').doc(id).update({isEnded:true});
-
+    this.afs.collection('appointments').doc(id).update({endedAt:new Date(),isEnded:true,endtime:2});
+    this.starting();
   }
 
 
+  ender(id){
+
+    this.afs.collection('appointments').doc(id).update({endtime:3});
+    this.starting();
+
+    };
+  
 
 
   starting() {

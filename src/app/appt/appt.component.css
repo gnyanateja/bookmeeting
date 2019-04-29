@@ -6,6 +6,10 @@
     
 }
 
+#ull2{
+    background-color: black;
+}
+
 #bt1{
     background-color: rgb(0, 116, 0);
     position: relative;
@@ -13,6 +17,11 @@
     color: aliceblue;
     
   }
+
+#h1{
+    color: black;
+    font-size: 80%;
+}
 
   #bt2{
     background-color: rgb(255, 94, 0);

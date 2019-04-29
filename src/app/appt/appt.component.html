@@ -6,38 +6,196 @@
       <table class="table table-inbox table-hover">
         <tbody>
     
-          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" (click)="todo(x)" >
-            <ul [ngStyle]="{'background-color': x.Accepted? '#0000FF':'#F80000'}">
-            <ol>
+          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;"  >
+            <ul id="ull1" *ngIf="x.endtime!=3" [ngStyle]="{'background-color': x.Accepted ? '#0000FF':'#F80000'}">
+            <ol (click)="todo(x)">
               
               Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
             </ol>
-            <ol>
+            <ol (click)="todo(x)">
                 Duration  : {{x.duration}} min
             </ol>
-            <ol *ngIf=" x.name!=null">
+            <ol *ngIf=" x.name!=null" (click)="todo(x)">
                 Name : {{x.name}} 
             </ol>
-            <ol *ngIf=" x.name==null">
+            <ol *ngIf=" x.name==null" (click)="todo(x)">
               Name : {{x.username}} 
           </ol>
-            <ol>
-                Accepted : {{x.Accepted}} 
+            <ol *ngIf="x.Accepted!=true && x.endtime==null" (click)="todo(x)">
+                Status : Requested 
+            </ol>
+            <ol *ngIf="x.Accepted!=false && x.endtime==0" (click)="todo(x)">
+                Status : Approved 
+            </ol>
+            <ol *ngIf="x.Accepted!=false && x.endtime==1" (click)="todo(x)">
+                Status : Ongoing
+            </ol>
+            <ol *ngIf="x.Accepted!=false && x.endtime==2" (click)="todo(x)">
+                Status : Completed
             </ol>
            
              <ol *ngIf="x.Accepted!=false">
                 <hr>
-              <button id="bt1" class="btn btn-send" aria-hidden="true"  (click)="starttimer(x.id)"
+              <button id="bt1" class="btn btn-send" data-toggle="modal" data-target="#mymodal2" aria-hidden="true"  
               type="submit">Start</button>
+
+              <div class="modal fade" id="mymodal2" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                    style="display: none;">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                         <h3 id="h1">Are you sure you want to start?</h3>
+                        </div>
+                            
+                            <tr>
+                              <td>
+                                <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="starttimer(x.id)"
+                                  type="submit">Yes</button>
+                              </td>
+              
+                              <td>
+                                <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                  type="submit">No</button>
+                              </td>
+                            </tr>
+                          
+                        </div>
+                      </div>
+                    </div>
              
-                <button id="bt2" class="btn btn-send" aria-hidden="true"  (click)="endtimer(x.id)"
-                  type="submit">End</button>
-                 <button id="bt3" [(ngModel)]="x.StartedAt" *ngIf="x.StartedAt!=null">Status : Ongoing</button>
-                <button id="bt3" *ngIf="x.isEnded!=false">Status : Completed</button>
+                    <button id="bt2" class="btn btn-send" data-toggle="modal" data-target="#mymodal3" aria-hidden="true"  
+                    type="submit">End</button>
+      
+                    <div class="modal fade" id="mymodal3" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                          style="display: none;">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                               <h3 id="h1">Are you sure you want to start?</h3>
+                              </div>
+                                  
+                                  <tr>
+                                    <td>
+                                      <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="endtimer(x.id)"
+                                        type="submit">Yes</button>
+                                    </td>
+                    
+                                    <td>
+                                      <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                        type="submit">No</button>
+                                    </td>
+                                  </tr>
+                                
+                              </div>
+                            </div>
+                          </div>
+                
+
+                  <button id="bt3" class="btn btn-send" aria-hidden="true"  (click)="ender(x.id)"
+                  type="submit">Remove</button>
+                 
+
+
                   <hr>
               </ol>
                
               </ul>
+
+
+              <ul id="ull2" *ngIf="x.Accepted && x.endtime==3 ">
+                  <ol (click)="todo(x)">
+                    
+                    Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
+                  </ol>
+                  <ol (click)="todo(x)">
+                      Duration  : {{x.duration}} min
+                  </ol>
+                  <ol *ngIf=" x.name!=null" (click)="todo(x)">
+                      Name : {{x.name}} 
+                  </ol>
+                  <ol *ngIf=" x.name==null" (click)="todo(x)">
+                    Name : {{x.username}} 
+                </ol>
+                  <ol *ngIf="x.Accepted!=true && x.endtime==null" (click)="todo(x)">
+                      Status : Requested 
+                  </ol>
+                  <ol *ngIf="x.Accepted!=false && x.endtime==0" (click)="todo(x)">
+                      Status : Approved 
+                  </ol>
+                  <ol *ngIf="x.Accepted!=false && x.endtime==1" (click)="todo(x)">
+                      Status : Ongoing
+                  </ol>
+                  <ol *ngIf="x.Accepted!=false && x.endtime==2" (click)="todo(x)">
+                      Status : Completed
+                  </ol>
+                 
+                   <!-- <ol *ngIf="x.Accepted!=false">
+                      <hr>
+                    <button id="bt1" class="btn btn-send" data-toggle="modal" data-target="#mymodal2" aria-hidden="true"  
+                    type="submit">Start</button>
+      
+                    <div class="modal fade" id="mymodal2" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                          style="display: none;">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                               <h3 id="h1">Are you sure you want to start?</h3>
+                              </div>
+                                  
+                                  <tr>
+                                    <td>
+                                      <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="starttimer(x.id)"
+                                        type="submit">Yes</button>
+                                    </td>
+                    
+                                    <td>
+                                      <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                        type="submit">No</button>
+                                    </td>
+                                  </tr>
+                                
+                              </div>
+                            </div>
+                          </div>
+                   
+                          <button id="bt2" class="btn btn-send" data-toggle="modal" data-target="#mymodal3" aria-hidden="true"  
+                          type="submit">End</button>
+            
+                          <div class="modal fade" id="mymodal3" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                                style="display: none;">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                     <h3 id="h1">Are you sure you want to start?</h3>
+                                    </div>
+                                        
+                                        <tr>
+                                          <td>
+                                            <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="endtimer(x.id)"
+                                              type="submit">Yes</button>
+                                          </td>
+                          
+                                          <td>
+                                            <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                              type="submit">No</button>
+                                          </td>
+                                        </tr>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                      
+      
+                        <button id="bt3" class="btn btn-send" aria-hidden="true"  (click)="ender(x.id)"
+                        type="submit">Remove</button>
+
+
+                        <hr>
+      
+                    </ol>
+                  -->
+                     
+                    </ul>
               
             </tr>
             
