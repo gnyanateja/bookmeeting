@@ -132,9 +132,9 @@ export class ApptComponent implements OnInit {
         //console.log((a.payload.doc.data().StartTime));
          //if(d<=a.payload.doc.data().StartTime){
           //  console.log(a.payload.doc.data().endtime);
-          // if(a.payload.doc.data().endtime==null){
-          //   document.getElementById('row1').setAttribute("style", "border: 1px solid green;");
-          // }
+          
+             
+           
           const data = a.payload.doc.data() as Post;
         const id = a.payload.doc.id;
         return { id, ...data };
@@ -145,7 +145,7 @@ export class ApptComponent implements OnInit {
     );
 
     
-    console.log(this.items)
+    
 
 
   }

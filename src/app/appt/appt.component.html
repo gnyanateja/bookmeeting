@@ -27,13 +27,13 @@
             <ol *ngIf="x.Accepted!=false && x.endtime==0" (click)="todo(x)">
                 Status : Approved 
             </ol>
-            <ol *ngIf="x.Accepted!=false && x.endtime==1" (click)="todo(x)">
+            <ol id="st1" *ngIf="x.Accepted!=false && x.endtime==1" (click)="todo(x)">
                 Status : Ongoing
             </ol>
-            <ol *ngIf="x.Accepted!=false && x.endtime==2" (click)="todo(x)">
+            <ol id="st2" *ngIf="x.Accepted!=false && x.endtime==2" (click)="todo(x)">
                 Status : Completed
             </ol>
-            <ol *ngIf="x.Accepted!=false && x.endtime==3" (click)="todo(x)">
+            <ol id="st3" *ngIf="x.Accepted!=false && x.endtime==3" (click)="todo(x)">
                 Status : Removed
             </ol>
            
