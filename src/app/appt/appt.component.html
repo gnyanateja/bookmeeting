@@ -27,10 +27,10 @@
            
              <ol *ngIf="x.Accepted!=false">
                 <hr>
-              <button id="bt1" class="btn btn-send" aria-hidden="true"  (click)="starttimer()"
+              <button id="bt1" class="btn btn-send" aria-hidden="true"  (click)="starttimer(x.id)"
               type="submit">Start</button>
              
-                <button id="bt2" class="btn btn-send" aria-hidden="true"  (click)="endtimer()"
+                <button id="bt2" class="btn btn-send" aria-hidden="true"  (click)="endtimer(x.id)"
                   type="submit">End</button>
                  
                   <hr>

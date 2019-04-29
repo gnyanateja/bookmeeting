@@ -96,14 +96,15 @@ export class ApptComponent implements OnInit {
     this.router.navigate(['/todo']);
   }
 
-  starttimer(){
+  starttimer(id){
 
-
-      
+    this.afs.collection('appointments').doc(id).update({startedAt:new Date()});
   }
 
 
-  endtimer(){
+  endtimer(id){
+    this.afs.collection('appointments').doc(id).update({endedAt:new Date()});
+    this.afs.collection('appointments').doc(id).update({isEnded:true});
 
   }
 
@@ -118,7 +119,7 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments', ref => ref);
+    this.postsCol = this.afs.collection('appointments', ref => ref.where("StartTime",">=",new Date()));
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         console.log(d);
