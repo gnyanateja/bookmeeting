@@ -53,7 +53,6 @@ export class TodoComponent implements OnInit {
       //  console.log(this.feat);
       this.startthis();
      
-      console.log(this.duration);
       
 
   }
@@ -66,13 +65,9 @@ export class TodoComponent implements OnInit {
         
         this.duration=doc.data().duration;
         this.stime=doc.data().starttime;
-        console.log(this.duration+"hi");
-        document.getElementById("inputPassword1").setAttribute("endtime","20");
-        console.log(document.getElementById("inputPassword1").getAttribute("endtime"));
       }
     });
     
-    document.getElementById("inputPassword1").setAttribute("endtime","0");
 
   }
 

@@ -15,13 +15,27 @@
             <ol>
                 Duration  : {{x.duration}} min
             </ol>
-            <ol>
-                Name : {{x.username}} 
+            <ol *ngIf=" x.name!=null">
+                Name : {{x.name}} 
             </ol>
+            <ol *ngIf=" x.name==null">
+              Name : {{x.username}} 
+          </ol>
             <ol>
                 Accepted : {{x.Accepted}} 
             </ol>
+            
+             <ol>
+              <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="addtime1()"
+              type="submit">Start</button>
+             
+                <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="removetime1()"
+                  type="submit">End</button>
+                  <br>
+              </ol>
+              
               </ul>
+              
             </tr>
             
           

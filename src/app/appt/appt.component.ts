@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Timestamp } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -15,7 +15,8 @@ export interface Post {
   month: string;
   username: string;
   year: string;
-  endtime: string;
+  StartTime:Date;
+  
 }
 export interface Postid extends Post {
   id: string;
@@ -107,27 +108,27 @@ export class ApptComponent implements OnInit {
     // this.postsCol= this.afs.collection('appointments');
     // this.posts=this.postsCol.valueChanges();
     //afs.collection('items', ref => ref.where('size', '==', 'large'))
-    this.postsCol = this.afs.collection('appointments', ref => ref.orderBy('hour'));
+
+    var d = new Date(); // for now
+   
+    
+    this.postsCol = this.afs.collection('appointments', ref => ref);
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Post;
+        console.log(d);
+        var k=a.payload.doc.data().StartTime;
+        //console.log((a.payload.doc.data().StartTime));
+         //if(d<=a.payload.doc.data().StartTime){
+          const data = a.payload.doc.data() as Post;
         const id = a.payload.doc.id;
         return { id, ...data };
+        //}
+        
       }
       ))
     );
 
-    // this.afs.collection("appointments").valueChanges().forEach(element => {
-    //   element.forEach(el => {
-    //     this.afs.collection('users', ref => ref.where("username", "==", el.username))
-    //       .valueChanges().forEach(edy => {
-    //         edy.forEach(ed => {
-    //           this.items.push(ed.name);
-    //         })
-    //       })
-    //   })
-    // });
-
+    
     console.log(this.items)
 
 
