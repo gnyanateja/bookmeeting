@@ -21,7 +21,7 @@
             <ol *ngIf=" x.name==null" (click)="todo(x)">
               Name : {{x.username}} 
           </ol>
-            <ol *ngIf="x.Accepted!=true && x.endtime==null" (click)="todo(x)">
+            <ol *ngIf="x.Accepted!=true" (click)="todo(x)">
                 Status : Requested 
             </ol>
             <ol *ngIf="x.Accepted!=false && x.endtime==0" (click)="todo(x)">
@@ -32,6 +32,9 @@
             </ol>
             <ol *ngIf="x.Accepted!=false && x.endtime==2" (click)="todo(x)">
                 Status : Completed
+            </ol>
+            <ol *ngIf="x.Accepted!=false && x.endtime==3" (click)="todo(x)">
+                Status : Removed
             </ol>
            
              <ol *ngIf="x.Accepted!=false">
