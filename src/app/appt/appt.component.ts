@@ -16,6 +16,7 @@ export interface Post {
   username: string;
   year: string;
   StartTime:Date;
+  endtime:number;
   
 }
 export interface Postid extends Post {
@@ -96,6 +97,7 @@ export class ApptComponent implements OnInit {
   starttimer(id){
     
     this.afs.collection('appointments').doc(id).update({startedAt:new Date(),endtime:1});
+    
     this.starting();
   }
 
@@ -129,6 +131,10 @@ export class ApptComponent implements OnInit {
       
         //console.log((a.payload.doc.data().StartTime));
          //if(d<=a.payload.doc.data().StartTime){
+          //  console.log(a.payload.doc.data().endtime);
+          // if(a.payload.doc.data().endtime==null){
+          //   document.getElementById('row1').setAttribute("style", "border: 1px solid green;");
+          // }
           const data = a.payload.doc.data() as Post;
         const id = a.payload.doc.id;
         return { id, ...data };

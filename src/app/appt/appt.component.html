@@ -6,7 +6,7 @@
       <table class="table table-inbox table-hover">
         <tbody>
     
-          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;"  >
+          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" >
             <ul id="ull1" *ngIf="x.endtime!=3" [ngStyle]="{'background-color': x.Accepted ? '#0000FF':'#F80000'}">
             <ol (click)="todo(x)">
               
@@ -74,7 +74,7 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                               <h3 id="h1">Are you sure you want to start?</h3>
+                               <h3 id="h1">Are you sure you want to end?</h3>
                               </div>
                                   
                                   <tr>
