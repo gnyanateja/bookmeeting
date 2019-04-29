@@ -48,7 +48,7 @@ export class ApptComponent implements OnInit {
   posts1: Observable<Post[]>;
   postids: Observable<Postid[]>;
   user: Array<User[]>;
-
+  
   constructor(
     private afs: AngularFirestore,
     private router: Router
@@ -70,13 +70,20 @@ export class ApptComponent implements OnInit {
       if (x.Accepted == true) {
         this.afs
           .collection("appointments")
-          .doc(x.id).update({Accepted:false});
+          .doc(x.id)
+          .set({
+            Accepted: false, day: x.day, duration: x.duration,
+            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year,isEnded: x.isEnded,name:x.name,Endtime:x.Endtime,StartTime:x.StartTime
+          });
       }
       else {
         this.afs
           .collection("appointments")
-          .doc(x.id).update({Accepted:true});
-          
+          .doc(x.id)
+          .set({
+            Accepted: true, day: x.day, duration: x.duration,
+            endtime: x.endtime, hour: x.hour, minute: x.minute, month: x.month, username: x.username, year: x.year,isEnded: x.isEnded,name:x.name,Endtime:x.Endtime,StartTime:x.StartTime
+          });
       }
       this.n = 0;
       this.starting();
@@ -112,11 +119,10 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments', ref => ref);
+    this.postsCol = this.afs.collection('appointments');
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
-        console.log(d);
-        var k=a.payload.doc.data().StartTime;
+      
         //console.log((a.payload.doc.data().StartTime));
          //if(d<=a.payload.doc.data().StartTime){
           const data = a.payload.doc.data() as Post;

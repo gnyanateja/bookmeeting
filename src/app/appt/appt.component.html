@@ -6,7 +6,7 @@
       <table class="table table-inbox table-hover">
         <tbody>
     
-          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;let y of items" (click)="todo(x)" >
+          <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" (click)="todo(x)" >
             <ul [ngStyle]="{'background-color': x.Accepted? '#0000FF':'#F80000'}">
             <ol>
               
@@ -32,10 +32,11 @@
              
                 <button id="bt2" class="btn btn-send" aria-hidden="true"  (click)="endtimer(x.id)"
                   type="submit">End</button>
-                 
+                 <button id="bt3" [(ngModel)]="x.StartedAt" *ngIf="x.StartedAt!=null">Status : Ongoing</button>
+                <button id="bt3" *ngIf="x.isEnded!=false">Status : Completed</button>
                   <hr>
               </ol>
-              
+               
               </ul>
               
             </tr>
