@@ -104,7 +104,11 @@ export class ApptComponent implements OnInit {
     this.mam_out=false;
   }
 
+  nothing() {
 
+  }
+
+  
   starttimer(id){
     
     this.afs.collection('appointments').doc(id).update({startedAt:new Date(),endtime:1});
