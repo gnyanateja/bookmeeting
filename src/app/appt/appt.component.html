@@ -94,9 +94,32 @@
                           </div>
                 
 
-                  <button id="bt3" class="btn btn-send" aria-hidden="true"  (click)="ender(x.id)"
+                  <button id="bt3" class="btn btn-send" aria-hidden="true" data-toggle="modal" data-target="#mymodal4" 
                   type="submit">Remove</button>
-                 
+
+                  <div class="modal fade" id="mymodal4" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                  style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                       <h3 id="h1">Are you sure you want to remove?</h3>
+                      </div>
+                          
+                          <tr>
+                            <td>
+                              <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="ender(x.id)"
+                                type="submit">Yes</button>
+                            </td>
+            
+                            <td>
+                              <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                type="submit">No</button>
+                            </td>
+                          </tr>
+                        
+                      </div>
+                    </div>
+                  </div>
 
 
                   <hr>
