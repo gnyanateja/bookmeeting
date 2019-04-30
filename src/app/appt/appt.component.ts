@@ -140,7 +140,7 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments',ref => ref.where("StartTime",">=",new Date()).orderBy('StartTime'));
+    this.postsCol = this.afs.collection('appointments',ref => ref.orderBy('StartTime'));
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
       
