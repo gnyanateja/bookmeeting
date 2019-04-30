@@ -59,7 +59,7 @@
           
           <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" >
             <ul id="ull1" *ngIf="x.endtime!=3" [ngStyle]="{'background-color': x.Accepted ? '#0000FF':'#F80000'}">
-              <br>
+              
               <ol (click)="todo(x)" *ngIf="x.minute>=10">
               
               Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month+1}}/{{x.year}}
@@ -186,7 +186,7 @@
 
               <ul id="ull2" *ngIf="x.Accepted && x.endtime==3 ">
                   <ol (click)="todo(x)">
-                    
+
                     Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
                   </ol>
                   <ol (click)="todo(x)">

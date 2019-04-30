@@ -12,10 +12,16 @@
           </div>
           <div class="modal-body">
             <div class="form-group" [formGroup]="composeForm">
-              <label class="col-lg-2 control-label">Start time</label>
+              <label class="col-lg-2 control-label">start time</label>
               <div class="col-lg-10">
-                <input type="datetime-local" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
-                <span *ngIf="isValid('starttime')">please enter the entertime</span>
+                <input type="time" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
+                <span *ngIf="isValid('starttime')">please enter the start time</span>
+              </div>
+
+              <label class="col-lg-2 control-label">date</label>
+              <div class="col-lg-10">
+                <input type="date" placeholder="" formControlName="startdate" [(ngModel)]="sdate"  id="inputEmail2" name="startdate" value="" class="form-control">
+                <span *ngIf="isValid('starttime')">please enter the date</span>
               </div>
 
               <label class="col-lg-2 control-label">duration(min)</label>

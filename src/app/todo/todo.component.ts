@@ -28,6 +28,7 @@ export class TodoComponent implements OnInit {
     private _activatedRoute: ActivatedRoute) {
       this.composeForm = new FormGroup({
         starttime: new FormControl(null, Validators.required),
+        startdate: new FormControl(null, Validators.required),
         endtime: new FormControl(null, Validators.required)
       });
       this.composeForm1 = new FormGroup({
@@ -37,6 +38,7 @@ export class TodoComponent implements OnInit {
      featCol:AngularFirestoreCollection<Feat>;
      feat:Observable<Feat[]>;
      stime:string;
+     sdate:Date;
      duration:number;
      dndd:boolean;
      dndd_dur:number;
@@ -66,6 +68,7 @@ export class TodoComponent implements OnInit {
         
         this.duration=doc.data().duration;
         this.stime=doc.data().starttime;
+        this.sdate=doc.data().startdate;
         this.dndd=doc.data().dnd;
         this.dndd_dur=doc.data().dnd_duration;
       }
@@ -78,7 +81,7 @@ export class TodoComponent implements OnInit {
     console.log(this.composeForm.value);
      if(this.composeForm.valid) {
      console.log(this.composeForm.value.starttime);
-       this.afs.collection('features').doc('doc').update({starttime:this.composeForm.value.starttime,duration:this.composeForm.value.endtime});
+       this.afs.collection('features').doc('doc').update({starttime:this.composeForm.value.starttime,duration:this.composeForm.value.endtime,startdate:this.composeForm.value.startdate});
      }
   }
 
