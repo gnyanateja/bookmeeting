@@ -50,7 +50,7 @@ export class TodoComponent implements OnInit {
     }
   
   ngOnInit() {
-
+   // this.isLogged();
       //  this.featCol=this.afs.collection('features');
       //  this.feat=this.featCol.valueChanges();
       //  console.log(this.feat);
@@ -60,6 +60,10 @@ export class TodoComponent implements OnInit {
 
   }
 
+
+  letit(){
+    this.router.navigate(['/home']);
+  }
 
   startthis(){
     this.afs.collection('features').doc('doc').ref.get()
@@ -75,6 +79,13 @@ export class TodoComponent implements OnInit {
     });
     
 
+  }
+  isLogged(){
+    const  user  =  JSON.parse(localStorage.getItem('token'));
+    if(user!="aduma"){
+      this.router.navigate(['/login']);
+    }
+    
   }
 
   addtime(){

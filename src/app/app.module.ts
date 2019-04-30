@@ -16,13 +16,14 @@ import { LoginComponent } from './login/login.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatFormField} from '@angular/material';
-
+import { MatIconModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
 
 
 const routes: Routes = [
   {path: 'home', component: ApptComponent},
-  {path: 'main',component: LoginComponent },
+  {path: 'login',component: LoginComponent },
   {path: 'todo', component: TodoComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}, // pathmatch is used for checking exact match
 ];
@@ -46,7 +47,7 @@ export const environment = {
     TodoComponent,
     ApptComponent,
     LoginComponent,
-   
+    
   ],
   imports: [
     BrowserModule,
@@ -57,6 +58,9 @@ export const environment = {
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
     MatPasswordStrengthModule,
     BrowserAnimationsModule,
     MatPasswordStrengthModule.forRoot()

@@ -59,8 +59,8 @@ export class ApptComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.starting()
+   // this.isLogged();
+    this.starting();
 
 
   }
@@ -89,6 +89,13 @@ export class ApptComponent implements OnInit {
 
   }
 
+  isLogged(){
+    const  user  =  JSON.parse(localStorage.getItem('token'));
+    if(user!="aduma"){
+      this.router.navigate(['/login']);
+    }
+    
+  }
 
   next() {
     this.router.navigate(['/todo']);
