@@ -35,8 +35,10 @@
     position: relative;
     box-sizing: content-box;
     color: aliceblue;
-    
+    left: 10%;
   }
+  
+
 
 #h1{
     color: black;
@@ -47,7 +49,7 @@
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
-    left: 10%;
+    left: 240%;
     color: aliceblue;
   }
 
