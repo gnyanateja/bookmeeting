@@ -108,7 +108,7 @@ export class ApptComponent implements OnInit {
 
   }
 
-  
+
   starttimer(id){
     
     this.afs.collection('appointments').doc(id).update({startedAt:new Date(),endtime:1});
@@ -140,7 +140,7 @@ export class ApptComponent implements OnInit {
     var d = new Date(); // for now
    
     
-    this.postsCol = this.afs.collection('appointments');
+    this.postsCol = this.afs.collection('appointments',ref => ref.where("StartTime",">=",new Date()).orderBy('StartTime'));
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
       
