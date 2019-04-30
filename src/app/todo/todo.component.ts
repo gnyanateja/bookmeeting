@@ -87,6 +87,7 @@ export class TodoComponent implements OnInit {
      if(this.composeForm1.valid) {
        this.adddnd();
      console.log(this.composeForm1.value.starttime);
+     this.afs.collection('features').doc('doc').update({dnd_startedAt:new Date()});
        this.afs.collection('features').doc('doc').update({dnd_duration:this.composeForm1.value.duration});
        
      }
