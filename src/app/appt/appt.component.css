@@ -4,6 +4,7 @@
     color: aliceblue; 
     align-content: center;
     
+    
 }
 
 #st1{
@@ -24,10 +25,13 @@
     
 }
 
-
+#ull1{
+    border-radius: 25px;
+}
 
 #ull2{
     background-color: black;
+    border-radius: 25px;
 }
 
 #bt1{
@@ -50,7 +54,7 @@
     left: 10%;
     color: aliceblue;
   }
-
+  
   #bt3{
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
@@ -58,6 +62,21 @@
     left: 20%;
     color: aliceblue;
   }
+
+  #bta1{
+    background-color: rgb(0, 116, 0);
+    position: relative;
+    left: 10%;
+    color: aliceblue;
+  }
+
+  #bta2{
+    background-color: rgb(255, 70, 70);
+    position: relative;
+    left: 240%;
+    color: aliceblue;
+  }
+
 #tt1{
     position: relative;
     margin-top: 6%;
@@ -77,6 +96,7 @@ z-index: 1;
 background-color:black;
 color: aliceblue;
 border-color: black;
+font-size: 130%;
 
 }
 
@@ -90,6 +110,7 @@ z-index: 1;
 background-color:rgb(214, 5, 5);
 color: aliceblue;
 border-color: rgb(187, 0, 0);
+font-size: 130%;
 }
 
 #tt4{
