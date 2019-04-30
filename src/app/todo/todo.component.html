@@ -14,7 +14,7 @@
             <div class="form-group" [formGroup]="composeForm">
               <label class="col-lg-2 control-label">Start time</label>
               <div class="col-lg-10">
-                <input type="time" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
+                <input type="datetime-local" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
                 <span *ngIf="isValid('starttime')">please enter the entertime</span>
               </div>
 
