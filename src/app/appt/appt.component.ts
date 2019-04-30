@@ -50,7 +50,7 @@ export class ApptComponent implements OnInit {
   posts1: Observable<Post[]>;
   postids: Observable<Postid[]>;
   user: Array<User[]>;
-  
+  mam_out:boolean;
   constructor(
     private afs: AngularFirestore,
     private router: Router
@@ -93,6 +93,17 @@ export class ApptComponent implements OnInit {
   next() {
     this.router.navigate(['/todo']);
   }
+
+  nextOut() {
+    this.afs.collection('features').doc('doc').update({maam_out:true});
+    this.mam_out=true;
+  }
+
+  nextIn() {
+    this.afs.collection('features').doc('doc').update({maam_out:false});
+    this.mam_out=false;
+  }
+
 
   starttimer(id){
     
@@ -144,6 +155,13 @@ export class ApptComponent implements OnInit {
       ))
     );
 
+    this.afs.collection('features').doc('doc').ref.get()
+    .then((doc)=>{
+      if(doc.exists){
+        this.mam_out=doc.data().maam_out;
+        
+      }
+    });
     
     
 
