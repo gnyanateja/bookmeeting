@@ -95,8 +95,8 @@
            
              <ol *ngIf="x.Accepted!=false">
                 <hr>
-              <button id="bt1" class="btn btn-send" data-toggle="modal" data-target="#mymodal2" aria-hidden="true"  
-              type="submit">Start</button>
+              <button id="bt1" class="btn btn-send" data-toggle="modal"  data-target="#mymodal2" aria-hidden="true"  
+              type="submit" (click)="just(x)">Start</button>
 
               <div class="modal fade" id="mymodal2" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
                     style="display: none;">
@@ -105,10 +105,10 @@
                         <div class="modal-header">
                          <h3 id="h1">Are you sure you want to start?</h3>
                         </div>
-                            
+                            {{x}}
                             <tr>
                               <td>
-                                <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="starttimer(x.id)"
+                                <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="starttimer()"
                                   type="submit">Yes</button>
                               </td>
               
@@ -123,7 +123,7 @@
                     </div>
              
                     <button id="bt2" class="btn btn-send" data-toggle="modal" data-target="#mymodal3" aria-hidden="true"  
-                    type="submit">End</button>
+                    type="submit" (click)="just(x)">End</button>
       
                     <div class="modal fade" id="mymodal3" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
                           style="display: none;">
@@ -135,7 +135,7 @@
                                   
                                   <tr>
                                     <td>
-                                      <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="endtimer(x.id)"
+                                      <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="endtimer()"
                                         type="submit">Yes</button>
                                     </td>
                     
@@ -151,7 +151,7 @@
                 
 
                   <button id="bt3" class="btn btn-send" aria-hidden="true" data-toggle="modal" data-target="#mymodal4" 
-                  type="submit">Remove</button>
+                  type="submit" (click)="just(x)">Remove</button>
 
                   <div class="modal fade" id="mymodal4" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
                   style="display: none;">
@@ -163,7 +163,7 @@
                           
                           <tr>
                             <td>
-                              <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="ender(x.id)"
+                              <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="ender()"
                                 type="submit">Yes</button>
                             </td>
             
@@ -184,7 +184,7 @@
               </ul>
 
 
-              <ul id="ull2" *ngIf="x.Accepted && x.endtime==3 ">
+              <ul id="ull2" *ngIf="x.Accepted && x.endtime==3 && x.EndedAt!=2">
                   <ol (click)="todo(x)">
 
                     Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
@@ -280,6 +280,7 @@
                     </ul>
               
             </tr>
+            
             
           
     

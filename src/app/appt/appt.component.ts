@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable, Timestamp } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -51,6 +51,7 @@ export class ApptComponent implements OnInit {
   postids: Observable<Postid[]>;
   user: Array<User[]>;
   mam_out:boolean;
+  r:any;
   constructor(
     private afs: AngularFirestore,
     private router: Router
@@ -65,23 +66,37 @@ export class ApptComponent implements OnInit {
 
   }
 
+  just(x){
+    console.log(x);
+    this.r=x;
+  }
+
   todo(x) {
     console.log(x);
     this.n = this.n + 1;
     if (this.n == 2) {
-      if (x.Accepted == true) {
-        this.afs
-          .collection("appointments")
-          .doc(x.id)
-          .update({
-            Accepted: false});
+      if(x.endtime!=3){
+        if (x.Accepted == true) {
+          this.afs
+            .collection("appointments")
+            .doc(x.id)
+            .update({
+              Accepted: false});
+        }
+        else {
+          this.afs
+            .collection("appointments")
+            .doc(x.id)
+            .update({
+              Accepted: true});
+        }
       }
-      else {
+      else{
         this.afs
-          .collection("appointments")
-          .doc(x.id)
-          .update({
-            Accepted: true});
+        .collection("appointments")
+        .doc(x.id)
+        .update({
+          Accepted: true,EndedAt:2});
       }
       this.n = 0;
       this.starting();
@@ -118,23 +133,24 @@ export class ApptComponent implements OnInit {
   }
 
 
-  starttimer(id){
+  starttimer(){
     
-    this.afs.collection('appointments').doc(id).update({startedAt:new Date(),endtime:1});
-    
+    this.afs.collection('appointments').doc(this.r.id).update({startedAt:new Date(),endtime:1});
+    console.log(this.r);
     this.starting();
   }
 
 
-  endtimer(id){
-    this.afs.collection('appointments').doc(id).update({endedAt:new Date(),isEnded:true,endtime:2});
+  endtimer(){
+    console.log(this.r);
+    this.afs.collection('appointments').doc(this.r.id).update({endedAt:new Date(),isEnded:true,endtime:2});
     this.starting();
   }
 
 
-  ender(id){
-
-    this.afs.collection('appointments').doc(id).update({endtime:3});
+  ender(){
+    console.log(this.r);
+    this.afs.collection('appointments').doc(this.r.id).update({endtime:3});
     this.starting();
 
     };
