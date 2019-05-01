@@ -27,11 +27,15 @@
     border-style: solid;
     background-color: black;
     color: aliceblue;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    
   }
   #i2{
     color: aliceblue;
     position: relative;
-    left: -45px;
+    left: -195px;
     top: 5px;
   }
 
