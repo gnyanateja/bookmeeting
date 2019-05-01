@@ -16,14 +16,28 @@
     position: relative;
     top: 10px;
 }
+
+::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: beige;
+  
+}
+
   #i1{
     border-color: aliceblue;
     border-style: solid;
+    background-color: black;
+    color: aliceblue;
+  }
+  #i2{
+    color: aliceblue;
+    position: relative;
+    left: -45px;
+    top: 5px;
   }
 
   .example-right-align {
     text-align: right;
-    color: aliceblue;
+    
     
   }
   
@@ -43,7 +57,7 @@
     text-align: center;
     margin:0 auto;
     width: 50%;
-    color: aliceblue;
+    
   
   }
 
