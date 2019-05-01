@@ -11,9 +11,15 @@
     color: red;
   }
   
+  #i1{
+    border-color: aliceblue;
+    border-style: solid;
+  }
+
   .example-right-align {
     text-align: right;
     color: aliceblue;
+    
   }
   
   input.example-right-align::-webkit-outer-spin-button,
@@ -31,9 +37,9 @@
     top: 300px;
     text-align: center;
     margin:0 auto;
-    width: 30%;
+    width: 50%;
     color: aliceblue;
-   
+  
   }
 
   
@@ -41,13 +47,15 @@
   .button {
     display: inline-block;
     padding: 15px 25px;
-    font-size: 24px;
+    font-size: 20px;
+    
     cursor: pointer;
     color: #fff;
     background-color: rgb(212, 63, 71);
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px rgb(212, 21, 21);
+    
     
   }
   
@@ -57,4 +65,10 @@
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+  }
+
+  #s1{
+    width: 200px;
+    position: relative;
+    left: 30%;
   }

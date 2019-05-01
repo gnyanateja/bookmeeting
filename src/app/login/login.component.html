@@ -1,8 +1,8 @@
 
 <div class="form-group" id="m1" [formGroup]="composeForm">
     <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
-      formControlName="pass" id="inputPassword1" name="pass" class="form-control">
+      <input id="i1"  matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+      formControlName="pass"  name="pass" class="form-control">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
     <p id="p1" *ngIf="tam==false">Please enter correct password!!!</p>
