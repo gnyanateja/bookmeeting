@@ -103,11 +103,13 @@ export class ApptComponent implements OnInit {
 
   nextOut() {
     this.afs.collection('features').doc('doc').update({maam_out:true});
+    this.afs.collection('features').doc('isMaanIn').update({isMaanIn:false});
     this.mam_out=true;
   }
 
   nextIn() {
     this.afs.collection('features').doc('doc').update({maam_out:false});
+    this.afs.collection('features').doc('isMaanIn').update({isMaanIn:true});
     this.mam_out=false;
   }
 

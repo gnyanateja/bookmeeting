@@ -4,7 +4,7 @@ import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/fo
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
-import {Md5} from 'ts-md5/dist/md5';
+import * as crypto from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   tam=true;
   constructor(private afs: AngularFirestore,
     private router: Router,
+    
     private _activatedRoute: ActivatedRoute) {
       this.composeForm = new FormGroup({
         pass: new FormControl(null, Validators.required),
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
         return this.composeForm.get(controlName).invalid && this.composeForm.get(controlName).touched;
       }
   ngOnInit() {
-
+    
+    console.log(crypto.MD5("password"));
   }
 
   log(){
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
         
       
     });
+    
 
   }
 
