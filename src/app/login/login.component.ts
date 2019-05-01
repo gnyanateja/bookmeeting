@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import { Observable } from 'rxjs';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import {Md5} from 'ts-md5/dist/md5';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
