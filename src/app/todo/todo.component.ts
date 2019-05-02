@@ -50,7 +50,7 @@ export class TodoComponent implements OnInit {
     }
   
   ngOnInit() {
-   // this.isLogged();
+    this.isLogged();
       //  this.featCol=this.afs.collection('features');
       //  this.feat=this.featCol.valueChanges();
       //  console.log(this.feat);
