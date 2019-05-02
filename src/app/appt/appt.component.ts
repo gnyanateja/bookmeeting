@@ -60,7 +60,7 @@ export class ApptComponent implements OnInit {
 
 
   ngOnInit() {
-   // this.isLogged();
+    this.isLogged();
     this.starting();
 
 
