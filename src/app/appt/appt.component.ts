@@ -140,6 +140,10 @@ export class ApptComponent implements OnInit {
     this.starting();
   }
 
+  startrej(){
+    this.afs.collection('appointments').doc(this.r.id).update({isRejected:true});
+    this.starting();
+  }
 
   endtimer(){
     console.log(this.r);
