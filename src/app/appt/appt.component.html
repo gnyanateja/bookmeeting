@@ -58,7 +58,7 @@
         <tbody>
           
           <tr class="unread" id="row1"   *ngFor="let x of posts | async ;" >
-            <ul id="ull1" *ngIf="x.endtime!=3 && x.isRejected==false" [ngStyle]="{'background-color': x.Accepted ? '#0000FF':'#F80000'}">
+            <ul id="ull1" *ngIf="x.endtime!=3 && (x.isRejected==false || x.isRejected==null)" [ngStyle]="{'background-color': x.Accepted ? '#0000FF':'#F80000'}">
               
               <ol (click)="todo(x)" *ngIf="x.minute>=10">
               
@@ -103,7 +103,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                           <h3 id="h1">Are you sure you want to start?</h3>
+                           <h3 id="h1">Are you sure you want to Reject?</h3>
                           </div>
                               
                               <tr>
