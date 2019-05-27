@@ -22,6 +22,8 @@ import { MatIconModule} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 
+import {UserService} from './user.service';
+
 
 const routes: Routes = [
   {path: 'home', component: ApptComponent},
@@ -69,7 +71,7 @@ export const environment = {
     BrowserAnimationsModule,
     MatPasswordStrengthModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

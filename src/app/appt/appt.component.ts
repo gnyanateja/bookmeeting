@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { UserService } from '../user.service';
 
 
 
@@ -54,6 +55,7 @@ export class ApptComponent implements OnInit {
   mam_out:boolean;
   r:any;
   constructor(
+    private _myservice: UserService,
     private http: HttpClient,
     private afs: AngularFirestore,
     private router: Router
@@ -84,13 +86,8 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: false});
-            var user={
-              name:x.name,
-              typeOfMeeting:x.typeOfMeeting,
-              StartTime:x.StartTime,
-              EndTime:x.EndTime
-            }
-              this.http.post(`http://localhost:5000/addEvent`, user);
+            
+    
         }
         else {
           this.afs
@@ -98,6 +95,23 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: true});
+              var st=x.StartTime;
+              var et=x.EndTime;
+              var user ={
+                name:x.name,
+                typeOfMeeting:x.typeOfMeeting,
+                StartTime:st.toDate(),
+                EndTime:et.toDate()
+              }
+              this._myservice.addEvent(user)
+            .subscribe(
+            data => {
+              console.log('sucess');
+            },
+            error => {
+              console.log('failure');
+             }
+          );
 
         }
       }
