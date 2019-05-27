@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 
@@ -53,6 +54,7 @@ export class ApptComponent implements OnInit {
   mam_out:boolean;
   r:any;
   constructor(
+    private http: HttpClient,
     private afs: AngularFirestore,
     private router: Router
   ) {
@@ -82,6 +84,13 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: false});
+            var user={
+              name:x.name,
+              typeOfMeeting:x.typeOfMeeting,
+              StartTime:x.StartTime,
+              EndTime:x.EndTime
+            }
+              this.http.post(`http://localhost:5000/addEvent`, user);
         }
         else {
           this.afs
@@ -89,6 +98,7 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: true});
+
         }
       }
       else{
