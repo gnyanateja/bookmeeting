@@ -7,10 +7,16 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   constructor(private _http: HttpClient) { }
-
+ // http://localhost:5000/addEvent
+ // https://bookcalender.herokuapp.com/addEvent
   addEvent(body: any) {
-    console.log(body);
     return this._http.post('https://bookcalender.herokuapp.com/addEvent', body, {
+      observe: 'body'
+    });
+  }
+
+  deleteEvent(body: any){
+    return this._http.post('https://bookcalender.herokuapp.com/deleteEvent', body, {
       observe: 'body'
     });
   }

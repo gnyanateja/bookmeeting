@@ -98,16 +98,33 @@ body{
 }
 #tt2{
 position: fixed;
-width: 80%;
+width: 60%;
 height: 4%;
 padding-bottom: 5%;
 z-index: 1;
+left: 20%;
 background-color:black;
 color: aliceblue;
 border-color: black;
 font-size: 130%;
 
 }
+
+
+#tt31{
+    position: fixed;
+    width: 20%;
+    height: 4%;
+    padding-bottom: 5%;
+    left: 0%;
+    z-index: 1;
+    background-color:rgb(214, 5, 5);
+    color: aliceblue;
+    border-color: rgb(187, 0, 0);
+    font-size: 130%;
+    }
+
+
 
 #tt3{
 position: fixed;

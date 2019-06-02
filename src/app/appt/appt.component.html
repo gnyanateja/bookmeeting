@@ -1,5 +1,29 @@
 <body>
     <div>
+        <button id="tt31" data-toggle="modal" data-target="#mymodal51">Add Event</button>
+                              <div class="modal fade" id="mymodal51" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+                              style="display: none;">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                  <h3 id="h1">Are you sure?</h3>
+                                  </div>
+                                      
+                                      <tr>
+                                        <td>
+                                          <button id="bta1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="isAd()"
+                                            type="submit">Yes</button>
+                                        </td>
+
+                                        <td>
+                                          <button id="bta2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                                            type="submit">No</button>
+                                        </td>
+                                      </tr>
+                                    
+                                  </div>
+                                </div>
+                              </div>
       <button id="tt2" (click)="next()">AMuDA Appointment Manager</button>
       <button id="tt3" *ngIf="this.mam_out==false" [(ngModel)]="mam_out" data-toggle="modal" data-target="#mymodal5">Out</button>
                       <div class="modal fade" id="mymodal5" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
@@ -76,6 +100,9 @@
             </ol>
             <ol *ngIf=" x.name==null" (click)="todo(x)">
               Name : {{x.username}} 
+          </ol>
+          <ol (click)="todo(x)">
+            Type of Meeting : {{x.typeOfMeeting}}
           </ol>
             <ol *ngIf="x.Accepted!=true" (click)="todo(x)">
                 Status : Requested 
@@ -217,10 +244,14 @@
 
 
               <ul id="ull2" *ngIf="x.Accepted && x.endtime==3 && x.EndedAt!=2">
-                  <ol (click)="todo(x)">
-
-                    Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month}}/{{x.year}}
-                  </ol>
+                  <ol (click)="todo(x)" *ngIf="x.minute>=10">
+              
+              Start time : {{x.hour}}:{{x.minute}} {{x.day}}/{{x.month+1}}/{{x.year}}
+            </ol>
+            <ol (click)="todo(x)" *ngIf="x.minute<10">
+              
+                Start time : {{x.hour}}:0{{x.minute}} {{x.day}}/{{x.month+1}}/{{x.year}}
+              </ol>
                   <ol (click)="todo(x)">
                       Duration  : {{x.duration}} min
                   </ol>

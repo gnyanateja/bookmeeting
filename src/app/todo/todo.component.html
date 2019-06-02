@@ -49,12 +49,64 @@
         </div>
       </div>
     </div>
+  
+
+
+  <button data-toggle="modal" id="id10" data-target="#mymodal10">Add Appointment</button>
+
+  <div class="modal fade" id="mymodal10" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
+    style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 id="m1" class="modal-title">Add Event</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" [formGroup]="composeForm10">
+            <label class="col-lg-2 control-label">Name</label>
+              <div class="col-lg-10">
+                <input type="text" placeholder="" formControlName="name"  id="inputEmail1" name="name" value="" class="form-control">
+                <span *ngIf="isValid('starttime')">please enter the name</span>
+              </div>
+            <label class="col-lg-2 control-label">start time</label>
+            <div class="col-lg-10">
+              <input type="time" placeholder="" formControlName="starttim"  id="inputEmail1" name="starttim" value="" class="form-control">
+              <span *ngIf="isValid('starttime')">please enter the start time</span>
+            </div>
+
+            <label class="col-lg-2 control-label">date</label>
+            <div class="col-lg-10">
+              <input type="date" placeholder="" formControlName="startdat"  id="inputEmail2" name="startdat" value="" class="form-control">
+              <span *ngIf="isValid('starttime')">please enter the date</span>
+            </div>
+
+            <label class="col-lg-2 control-label">duration(min)</label>
+            <div class="col-lg-10">
+              <input type="number" placeholder="" formControlName="endtim"  id="inputPassword1" name="endtim"   class="form-control">
+              <span *ngIf="isValid('endtime')">please enter the duration</span>
+
+            </div>
+            <br>
+            <tr>
+              <td>
+                <button id="bt1" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="addEvent()"
+                  type="submit">Add</button>
+              </td>
+
+              <td>
+                <button id="bt2" class="btn btn-send" aria-hidden="true" data-dismiss="modal" (click)="nothing()"
+                  type="submit">Cancel</button>
+              </td>
+            </tr>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-
-  <div>
-    <button id="id2" data-toggle="modal" data-target="#mymodal1" [(ngModel)]="dndd" [ngStyle]="{'background-color': dndd? 'rgb(255, 0, 34)':'rgb(0, 116, 0)'}">Do
+    <button id="id2" data-toggle="modal" data-target="#mymodal1" [ngStyle]="{'background-color': dndd? 'rgb(255, 0, 34)':'rgb(0, 116, 0)'}">Do
       not Disturb </button>
   
     <div class="modal fade" id="mymodal1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
@@ -91,10 +143,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
 
 </body>

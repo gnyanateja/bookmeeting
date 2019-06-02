@@ -75,6 +75,20 @@ export class ApptComponent implements OnInit {
     this.r=x;
   }
 
+  isAd(){
+    this._myservice.deleteEvent("hi")
+    .subscribe(
+    data => {
+      this.afs.collection('appointments').add(data);
+    },
+    error => {
+      console.log('failure');
+     }
+  );
+  this.starting();
+  }
+
+
   todo(x) {
     console.log(x);
     this.n = this.n + 1;
@@ -101,7 +115,8 @@ export class ApptComponent implements OnInit {
                 name:x.name,
                 typeOfMeeting:x.typeOfMeeting,
                 StartTime:st.toDate(),
-                EndTime:et.toDate()
+                EndTime:et.toDate(),
+                id:x.id
               }
               this._myservice.addEvent(user)
             .subscribe(
@@ -183,7 +198,7 @@ export class ApptComponent implements OnInit {
 
     };
   
-
+    
 
   starting() {
     // this.postsCol= this.afs.collection('appointments');

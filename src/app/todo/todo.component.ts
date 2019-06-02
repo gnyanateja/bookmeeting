@@ -21,6 +21,7 @@ export interface Feat{
 export class TodoComponent implements OnInit {
   composeForm: FormGroup;
   composeForm1: FormGroup;
+  composeForm10: FormGroup;
 
   constructor(
     private afs: AngularFirestore,
@@ -30,6 +31,12 @@ export class TodoComponent implements OnInit {
         starttime: new FormControl(null, Validators.required),
         startdate: new FormControl(null, Validators.required),
         endtime: new FormControl(null, Validators.required)
+      });
+      this.composeForm10 = new FormGroup({
+        name:new FormControl(null, Validators.required),
+        starttim: new FormControl(null, Validators.required),
+        startdat: new FormControl(null, Validators.required),
+        endtim: new FormControl(null, Validators.required)
       });
       this.composeForm1 = new FormGroup({
         duration: new FormControl(null,Validators.required)
@@ -86,6 +93,30 @@ export class TodoComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     
+  }
+
+  addEvent(){
+    if(this.composeForm10.valid) {
+      console.log(this.composeForm10.value.starttim);
+      var temp10=this.composeForm10.value.startdat+" "+this.composeForm10.value.starttim;
+      
+      var Stime = new Date();
+      
+      //Stime.setDate(this.composeForm10.value.startdat);
+      Stime.setTime(Number(this.composeForm10.value.starttim));
+      var Etime=new Date();
+      Etime.setFullYear(this.composeForm10.value.startdat);
+      console.log(Stime);
+      console.log(Etime);
+
+
+        // this.afs.collection('appointments').add({
+        //   Accepted:true,
+        //   starttime:,
+        //   duration:this.composeForm.value.endtime,
+        //   startdate:this.composeForm.value.startdate
+        // });
+      }
   }
 
   addtime(){
