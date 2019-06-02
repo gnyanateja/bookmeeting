@@ -88,6 +88,8 @@ export class ApptComponent implements OnInit {
   this.starting();
   }
 
+  
+
 
   todo(x) {
     console.log(x);

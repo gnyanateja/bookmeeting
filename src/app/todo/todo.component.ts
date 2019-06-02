@@ -156,4 +156,8 @@ export class TodoComponent implements OnInit {
     this.dndd=false;
   }
 
+  nothing(){
+    
+  }
+
 }
