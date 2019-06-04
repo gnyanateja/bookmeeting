@@ -35,7 +35,6 @@ export class TodoComponent implements OnInit {
       this.composeForm10 = new FormGroup({
         name:new FormControl(null, Validators.required),
         starttim: new FormControl(null, Validators.required),
-        startdat: new FormControl(null, Validators.required),
         endtim: new FormControl(null, Validators.required)
       });
       this.composeForm1 = new FormGroup({
@@ -55,6 +54,8 @@ export class TodoComponent implements OnInit {
     isValid1(controlName) {
       return this.composeForm1.get(controlName).invalid && this.composeForm1.get(controlName).touched;
     }
+
+  
   
   ngOnInit() {
     this.isLogged();
@@ -99,23 +100,57 @@ export class TodoComponent implements OnInit {
     if(this.composeForm10.valid) {
       console.log(this.composeForm10.value.starttim);
       var temp10=this.composeForm10.value.startdat+" "+this.composeForm10.value.starttim;
-      
+      var sTime=this.composeForm10.value.starttim;
       var Stime = new Date();
-      
+      var index = sTime.indexOf(":"); // replace with ":" for differently displayed time.
+  
+      var hours = sTime.substring(0, index);
+      var minutes = sTime.substring(index + 1, sTime.length);
+    
+  
+      Stime.setHours(hours);
+      Stime.setMinutes(minutes);
+      var dt1=Stime;
+
+      //Stime=this.composeForm10.value.startdat;
       //Stime.setDate(this.composeForm10.value.startdat);
-      Stime.setTime(Number(this.composeForm10.value.starttim));
+     // Stime.setTime(Number(this.composeForm10.value.starttim));
       var Etime=new Date();
-      Etime.setFullYear(this.composeForm10.value.startdat);
-      console.log(Stime);
-      console.log(Etime);
+      Etime.setHours(hours);
+      Etime.setMinutes(Stime.getMinutes()+this.composeForm10.value.endtim)
+      if(Etime.getMinutes()>=60){
+        var tp=Etime.getMinutes()/60;
+        console.log(tp);
+        Etime.setMinutes(60-Etime.getMinutes());
+        Etime.setHours(Etime.getHours()+tp);
+
+        if(Etime.getHours()>=24){
+          var xp=24-Etime.getHours();
+          Etime.setHours(xp);
+          Etime.setDate(Etime.getDate()+1);
+          
+        }
+      }
+      
 
 
-        // this.afs.collection('appointments').add({
-        //   Accepted:true,
-        //   starttime:,
-        //   duration:this.composeForm.value.endtime,
-        //   startdate:this.composeForm.value.startdate
-        // });
+
+        this.afs.collection('appointments').add({
+          Accepted:false,
+          StartTime:Stime,
+          duration:this.composeForm10.value.endtim,
+          day:Stime.getDate(),
+          month:Stime.getMonth(),
+          year:Stime.getFullYear(),
+          hour:Stime.getHours(),
+          minute:Stime.getMinutes(),
+          name:this.composeForm10.value.name,
+          EndTime:Etime,
+          isRejected:false,
+          isEnded:false,
+          typeOfMeeting: "Urgent Meeting",
+          username:this.composeForm10.value.name
+        });
       }
   }
 
@@ -157,7 +192,7 @@ export class TodoComponent implements OnInit {
   }
 
   nothing(){
-    
+
   }
 
 }

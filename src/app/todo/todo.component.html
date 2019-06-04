@@ -16,20 +16,20 @@
             <div class="form-group" [formGroup]="composeForm">
               <label class="col-lg-2 control-label">start time</label>
               <div class="col-lg-10">
-                <input type="time" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control">
-                <span *ngIf="isValid('starttime')">please enter the start time</span>
+                <input type="time" placeholder="" formControlName="starttime" [(ngModel)]="stime"  id="inputEmail1" name="starttime" value="" class="form-control" required>
+                <span *ngIf="">please enter the start time</span>
               </div>
 
               <label class="col-lg-2 control-label">date</label>
               <div class="col-lg-10">
-                <input type="date" placeholder="" formControlName="startdate" [(ngModel)]="sdate"  id="inputEmail2" name="startdate" value="" class="form-control">
-                <span *ngIf="isValid('starttime')">please enter the date</span>
+                <input type="date" placeholder="" formControlName="startdate" [(ngModel)]="sdate"  id="inputEmail2" name="startdate" value="" class="form-control" required="required">
+                <span *ngIf="">please enter the date</span>
               </div>
 
               <label class="col-lg-2 control-label">duration(min)</label>
               <div class="col-lg-10">
-                <input type="number" placeholder="" formControlName="endtime" [(ngModel)]="duration" id="inputPassword1" name="endtime" value="this.duration"  class="form-control">
-                <span *ngIf="isValid('endtime')">please enter the duration</span>
+                <input type="number" placeholder="" formControlName="endtime" [(ngModel)]="duration" id="inputPassword1" name="endtime" value="this.duration"  class="form-control" required>
+                <span *ngIf="">please enter the duration</span>
 
               </div>
               <br>
@@ -66,25 +66,20 @@
           <div class="form-group" [formGroup]="composeForm10">
             <label class="col-lg-2 control-label">Name</label>
               <div class="col-lg-10">
-                <input type="text" placeholder="" formControlName="name"  id="inputEmail1" name="name" value="" class="form-control">
-                <span *ngIf="isValid('starttime')">please enter the name</span>
+                <input type="text" placeholder="" formControlName="name"  id="inputEmail1" name="name" value="" class="form-control" required="true">
+                <span *ngIf="">please enter the name</span>
               </div>
             <label class="col-lg-2 control-label">start time</label>
             <div class="col-lg-10">
-              <input type="time" placeholder="" formControlName="starttim"  id="inputEmail1" name="starttim" value="" class="form-control">
-              <span *ngIf="isValid('starttime')">please enter the start time</span>
+              <input type="time" placeholder="" formControlName="starttim"  id="inputEmail1" name="starttim" value="" class="form-control" required>
+              <span *ngIf="">please enter the start time</span>
             </div>
 
-            <label class="col-lg-2 control-label">date</label>
-            <div class="col-lg-10">
-              <input type="date" placeholder="" formControlName="startdat"  id="inputEmail2" name="startdat" value="" class="form-control">
-              <span *ngIf="isValid('starttime')">please enter the date</span>
-            </div>
-
+            
             <label class="col-lg-2 control-label">duration(min)</label>
             <div class="col-lg-10">
-              <input type="number" placeholder="" formControlName="endtim"  id="inputPassword1" name="endtim"   class="form-control">
-              <span *ngIf="isValid('endtime')">please enter the duration</span>
+              <input type="number" placeholder="" formControlName="endtim"  id="inputPassword1" name="endtim"   class="form-control" required>
+              <span *ngIf="">please enter the duration</span>
 
             </div>
             <br>
