@@ -18,6 +18,7 @@ export interface Post {
   username: string;
   year: string;
   StartTime:Date;
+  EndTime:Date;
   endtime:number;
   
 }
@@ -71,7 +72,6 @@ export class ApptComponent implements OnInit {
   }
 
   just(x){
-    console.log(x);
     this.r=x;
   }
 
@@ -79,6 +79,8 @@ export class ApptComponent implements OnInit {
     this._myservice.deleteEvent("hi")
     .subscribe(
     data => {
+      var y=data.valueOf();
+      console.log(y.valueOf());
       this.afs.collection('appointments').add(data);
     },
     error => {
@@ -183,7 +185,25 @@ export class ApptComponent implements OnInit {
 
   startrej(){
     this.afs.collection('appointments').doc(this.r.id).update({isRejected:true});
+
+   this.afs.collection('users', ref => ref.where('name', '==', this.r.name)).get().forEach(
+    actions => actions.forEach(a => {
+          var mail=a.data().email;
+          var dT=this.r.day+"/"+this.r.month+"/"+this.r.year;
+          var sT=this.r.hour+":"+this.r.minute;
+          this._myservice.mailREvent({"mail":mail,"date":dT,"StartTime":sT})
+          .subscribe(
+          data => {
+            console.log("suceess");
+          },
+          error => {
+            console.log(error);
+           }
+        );
+        }));
+
     this.starting();
+   
   }
 
   endtimer(){
