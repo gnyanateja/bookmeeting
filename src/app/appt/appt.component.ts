@@ -104,6 +104,10 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: false});
+          
+
+
+    
             
     
         }
@@ -131,6 +135,24 @@ export class ApptComponent implements OnInit {
               console.log('failure');
              }
           );
+
+          this.afs.collection('users', ref => ref.where('name', '==', x.name)).get().forEach(
+            actions => actions.forEach(a => {
+                  var mail=a.data().email;
+                  var dT=x.day+"/"+x.month+"/"+x.year;
+                  var sT=x.hour+":"+x.minute;
+                  this._myservice.mailAEvent({"mail":mail,"date":dT,"StartTime":sT})
+                  .subscribe(
+                  data => {
+                    console.log("suceess");
+                  },
+                  error => {
+                    console.log(error);
+                   }
+                );
+                }));
+        
+
 
         }
       }

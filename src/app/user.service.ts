@@ -28,5 +28,13 @@ export class UserService {
     });
   }
 
+  mailAEvent(body: any){
+    return this._http.post('https://bookcalender.herokuapp.com/mailAEvent', body, {
+      observe: 'body'
+    });
+  }
+
+ 
+
 
 }
