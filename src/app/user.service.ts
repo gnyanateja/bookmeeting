@@ -15,6 +15,13 @@ export class UserService {
     });
   }
 
+  RemoveEvent(body: any) {
+    
+    return this._http.post('http://localhost:5000/RemoveEvent', body, {
+      observe: 'body'
+    });
+  }
+
   deleteEvent(body: any){
     return this._http.post('https://bookcalender.herokuapp.com/deleteEvent', body, {
       observe: 'body'

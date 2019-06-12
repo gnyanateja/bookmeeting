@@ -25,7 +25,7 @@
                                 </div>
                               </div>
       <button id="tt2" (click)="next()">AMuDA Appointmenter</button>
-      <button id="tt3" *ngIf="this.mam_out==false" [(ngModel)]="mam_out" data-toggle="modal" data-target="#mymodal5">Out</button>
+      <button id="tt3" *ngIf="!mam_out" data-toggle="modal" data-target="#mymodal5">Out</button>
                       <div class="modal fade" id="mymodal5" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
                       style="display: none;">
                       <div class="modal-dialog">
@@ -51,7 +51,7 @@
                       </div>
 
       
-      <button id="tt4" *ngIf="this.mam_out==true" [(ngModel)]="mam_out" (click)="nextIn()" data-toggle="modal" data-target="#mymodal6">In</button>
+      <button id="tt4" *ngIf="this.mam_out"  (click)="nextIn()" data-toggle="modal" data-target="#mymodal6">In</button>
                               <div class="modal fade" id="mymodal6" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" tabindex="-1"
                               style="display: none;">
                               <div class="modal-dialog">

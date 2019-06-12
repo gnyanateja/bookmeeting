@@ -53,7 +53,7 @@ export class ApptComponent implements OnInit {
   posts1: Observable<Post[]>;
   postids: Observable<Postid[]>;
   user: Array<User[]>;
-  mam_out:boolean;
+  mam_out = true;
   r:any;
   constructor(
     private _myservice: UserService,
@@ -94,7 +94,7 @@ export class ApptComponent implements OnInit {
 
 
   todo(x) {
-    console.log(x);
+    
     this.n = this.n + 1;
     if (this.n == 2) {
       if(x.endtime!=3){
@@ -104,10 +104,30 @@ export class ApptComponent implements OnInit {
             .doc(x.id)
             .update({
               Accepted: false});
-          
-
-
+              var st11=x.StartTime;
+              var et11=x.EndTime;
+              
     
+              var user11 ={
+                name:x.name,
+                typeOfMeeting:x.typeOfMeeting,
+                StartTime:st11.toDate().toString(),
+                EndTime:et11.toDate().toString(),
+                time:x.year+"-"+(x.month+1)+"-"+x.day+" 5:40 AM",
+                time1:x.year+"-"+(x.month+1)+"-"+x.day+" 11:40 PM"
+              }
+              
+            
+              this._myservice.RemoveEvent(user11)
+              .subscribe(
+              data => {
+                console.log('sucess');
+              },
+              error => {
+                console.log('failure');
+               }
+            );
+ 
             
     
         }
@@ -201,7 +221,7 @@ export class ApptComponent implements OnInit {
   starttimer(){
     
     this.afs.collection('appointments').doc(this.r.id).update({startedAt:new Date(),endtime:1});
-    console.log(this.r);
+    
     this.starting();
   }
 
@@ -223,20 +243,21 @@ export class ApptComponent implements OnInit {
            }
         );
         }));
+        
 
     this.starting();
    
   }
 
   endtimer(){
-    console.log(this.r);
+
     this.afs.collection('appointments').doc(this.r.id).update({endedAt:new Date(),isEnded:true,endtime:2});
     this.starting();
   }
 
 
   ender(){
-    console.log(this.r);
+    
     this.afs.collection('appointments').doc(this.r.id).update({endtime:3});
     this.starting();
 
