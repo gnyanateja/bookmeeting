@@ -28,6 +28,12 @@ export class UserService {
     });
   }
 
+  creatEvent(body: any){
+    return this._http.post('http://localhost:5000/creatEvent', body, {
+      observe: 'body'
+    });
+  }
+
 
   mailREvent(body: any){
     return this._http.post('https://bookcalender.herokuapp.com/mailREvent', body, {

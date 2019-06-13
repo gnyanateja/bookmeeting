@@ -217,6 +217,29 @@ export class ApptComponent implements OnInit {
 
   }
 
+  startForgot() {
+    
+    var user ={
+      name:this.r.name,
+      des:this.r.typeOfMeeting,
+      StartTime:this.r.StartTime.toDate(),
+      EndTime:this.r.EndTime.toDate()
+    }
+   
+    this.afs.collection('appointments').doc(this.r.id).update({forgot:true,isRejected:true});
+    this._myservice.creatEvent(user)
+                  .subscribe(
+                  data => {
+                    this.afs.collection('appointments').add(data);
+                    console.log("cal success");
+                  },
+                  error => {
+                    console.log(error);
+                   }
+                );
+            
+    this.starting();
+  }
 
   starttimer(){
     
@@ -225,6 +248,10 @@ export class ApptComponent implements OnInit {
 
     this.starting();
   }
+
+
+  
+
 
   startrej(){
     this.afs.collection('appointments').doc(this.r.id).update({isRejected:true});
@@ -262,10 +289,10 @@ export class ApptComponent implements OnInit {
     
     this.afs.collection('appointments').doc(this.r.id).update({endtime:3});
     this.starting();
-
+ 
     };
   
-    
+ 
 
   starting() {
     // this.postsCol= this.afs.collection('appointments');
