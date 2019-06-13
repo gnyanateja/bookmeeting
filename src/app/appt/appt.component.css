@@ -110,7 +110,7 @@ body{
 }
 #tt2{
 position: fixed;
-width: 80%;
+width: 60%;
 height: 4%;
 padding-bottom: 5%;
 z-index: 1;
@@ -125,7 +125,7 @@ font-size: 130%;
 
 #tt31{
     position: fixed;
-    width: 17%;
+    width: 20%;
     height: 4%;
     padding-bottom: 5%;
     left: 0%;
