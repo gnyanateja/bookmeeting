@@ -48,7 +48,7 @@
     position: relative;
     box-sizing: content-box;
     color: aliceblue;
-    
+    left:-3%;
     font-size: 70%;
   }
 
@@ -61,7 +61,7 @@
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
-    left: 8%;
+    left: 6%;
     font-size: 70%;
     color: aliceblue;
   }
@@ -70,7 +70,7 @@
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
-    left: 17%;
+    left: 12%;
     font-size: 70%;
     color: aliceblue;
   }
@@ -80,7 +80,7 @@
     box-sizing: content-box;
     font-size: 70%;
     position: relative;
-    left: 25%;
+    left: 20%;
     color: aliceblue;
   }
 
