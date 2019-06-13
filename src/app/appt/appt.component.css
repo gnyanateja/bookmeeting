@@ -110,11 +110,11 @@ body{
 }
 #tt2{
 position: fixed;
-width: 70%;
+width: 80%;
 height: 4%;
 padding-bottom: 5%;
 z-index: 1;
-left: 15%;
+left: 12%;
 background-color:black;
 color: aliceblue;
 border-color: black;
@@ -129,7 +129,7 @@ font-size: 130%;
     height: 4%;
     padding-bottom: 5%;
     left: 0%;
-    z-index: 1;
+    z-index: 2;
     background-color:rgb(214, 5, 5);
     color: aliceblue;
     border-color: rgb(187, 0, 0);
@@ -144,7 +144,7 @@ width: 20%;
 height: 4%;
 padding-bottom: 5%;
 left: 80%;
-z-index: 1;
+z-index: 2;
 background-color:rgb(214, 5, 5);
 color: aliceblue;
 border-color: rgb(187, 0, 0);
