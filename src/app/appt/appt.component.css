@@ -110,11 +110,11 @@ body{
 }
 #tt2{
 position: fixed;
-width: 60%;
+width: 80%;
 height: 4%;
 padding-bottom: 5%;
 z-index: 1;
-left: 20%;
+left: 15%;
 background-color:black;
 color: aliceblue;
 border-color: black;
