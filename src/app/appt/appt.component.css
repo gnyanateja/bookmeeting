@@ -1,34 +1,34 @@
 #row1{
     position: relative;
     font-size: 130%;
-    color: aliceblue; 
+    color: aliceblue;
     align-content: center;
-    
-    
+
+
 }
 
 #st1{
-    
-    border-style:solid; 
+
+    border-style:solid;
     border-color:green;
     width: 70%
-    
+
 }
 
 #st2{
-    
-    border-style:solid; 
+
+    border-style:solid;
     border-color:rgb(195, 7, 7);
     width: 70%
 }
 
 
 #st3{
-    
+
 }
 
 #ull1{
-   
+
     border-radius: 25px;
     width: 95%;
     position: relative;
@@ -36,11 +36,11 @@
 }
 
 #ull2{
-   
+
     background-color: black;
     border-radius: 25px;
     width: 95%;
-    
+
 }
 
 #bt1{
@@ -65,7 +65,7 @@
     font-size: 70%;
     color: aliceblue;
   }
-  
+
   #bt3{
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
@@ -114,7 +114,7 @@ width: 60%;
 height: 4%;
 padding-bottom: 5%;
 z-index: 1;
-left: 17%;
+left: 20%;
 background-color:black;
 color: aliceblue;
 border-color: black;
