@@ -221,7 +221,8 @@ export class ApptComponent implements OnInit {
   starttimer(){
     
     this.afs.collection('appointments').doc(this.r.id).update({startedAt:new Date(),endtime:1});
-    
+    this.afs.collection('features').doc("isMaamIn").update({meeting:"Ongoing"});
+
     this.starting();
   }
 
@@ -252,6 +253,7 @@ export class ApptComponent implements OnInit {
   endtimer(){
 
     this.afs.collection('appointments').doc(this.r.id).update({endedAt:new Date(),isEnded:true,endtime:2});
+    this.afs.collection('features').doc("isMaamIn").update({meeting:"Free"});
     this.starting();
   }
 
