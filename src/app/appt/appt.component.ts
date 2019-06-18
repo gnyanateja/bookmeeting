@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserService } from '../user.service';
+import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 
@@ -20,7 +21,7 @@ export interface Post {
   StartTime:Date;
   EndTime:Date;
   endtime:number;
-  
+
 }
 export interface Postid extends Post {
   id: string;
@@ -41,7 +42,7 @@ export interface User {
   styleUrls: ['./appt.component.css']
 })
 export class ApptComponent implements OnInit {
-
+  composeForm: FormGroup;
   title = 'appoint';
   items=new Array();
   n = 0;
@@ -61,6 +62,12 @@ export class ApptComponent implements OnInit {
     private afs: AngularFirestore,
     private router: Router
   ) {
+    this.composeForm = new FormGroup({
+      val: new FormControl(null, Validators.required),
+    });
+  }
+  isValid(controlName) {
+    return this.composeForm.get(controlName).invalid && this.composeForm.get(controlName).touched;
   }
 
 
@@ -90,11 +97,11 @@ export class ApptComponent implements OnInit {
   this.starting();
   }
 
-  
+
 
 
   todo(x) {
-    
+
     this.n = this.n + 1;
     if (this.n == 2) {
       if(x.endtime!=3){
@@ -106,8 +113,8 @@ export class ApptComponent implements OnInit {
               Accepted: false});
               var st11=x.StartTime;
               var et11=x.EndTime;
-              
-    
+
+
               var user11 ={
                 name:x.name,
                 typeOfMeeting:x.typeOfMeeting,
@@ -116,8 +123,8 @@ export class ApptComponent implements OnInit {
                 time:x.year+"-"+(x.month+1)+"-"+x.day+" 5:40 AM",
                 time1:x.year+"-"+(x.month+1)+"-"+x.day+" 11:40 PM"
               }
-              
-            
+
+
               this._myservice.RemoveEvent(user11)
               .subscribe(
               data => {
@@ -127,9 +134,9 @@ export class ApptComponent implements OnInit {
                 console.log('failure');
                }
             );
- 
-            
-    
+
+
+
         }
         else {
           this.afs
@@ -171,7 +178,7 @@ export class ApptComponent implements OnInit {
                    }
                 );
                 }));
-        
+
 
 
         }
@@ -194,7 +201,7 @@ export class ApptComponent implements OnInit {
     if(user!="aduma"){
       this.router.navigate(['/login']);
     }
-    
+
   }
 
   next() {
@@ -218,14 +225,14 @@ export class ApptComponent implements OnInit {
   }
 
   startForgot() {
-    
+
     var user ={
       name:this.r.name,
       des:this.r.typeOfMeeting,
       StartTime:this.r.StartTime.toDate(),
       EndTime:this.r.EndTime.toDate()
     }
-   
+
     this.afs.collection('appointments').doc(this.r.id).update({forgot:true,isRejected:true});
     this._myservice.creatEvent(user)
                   .subscribe(
@@ -237,20 +244,21 @@ export class ApptComponent implements OnInit {
                     console.log(error);
                    }
                 );
-            
-    this.starting();
-  }
-
-  starttimer(){
-    
-    this.afs.collection('appointments').doc(this.r.id).update({startedAt:new Date(),endtime:1});
-    this.afs.collection('features').doc("isMaamIn").update({meeting:"Ongoing"});
 
     this.starting();
   }
 
+  starttimer() {
+    if (this.composeForm.valid) {
+      this.afs.collection('appointments').doc(this.r.id).update({startedAt:new Date(),endtime:1,count:this.composeForm.value.val});
+      this.afs.collection('features').doc("isMaamIn").update({meeting:"Ongoing"});
 
-  
+      this.starting();
+    }
+  }
+
+
+
 
 
   startrej(){
@@ -271,10 +279,10 @@ export class ApptComponent implements OnInit {
            }
         );
         }));
-        
+
 
     this.starting();
-   
+
   }
 
   endtimer(){
@@ -286,13 +294,13 @@ export class ApptComponent implements OnInit {
 
 
   ender(){
-    
+
     this.afs.collection('appointments').doc(this.r.id).update({endtime:3});
     this.starting();
- 
+
     };
-  
- 
+
+
 
   starting() {
     // this.postsCol= this.afs.collection('appointments');
@@ -300,23 +308,23 @@ export class ApptComponent implements OnInit {
     //afs.collection('items', ref => ref.where('size', '==', 'large'))
 
     var d = new Date(); // for now
-   
-    
+
+
     this.postsCol = this.afs.collection('appointments',ref => ref.orderBy('StartTime'));
     this.posts = this.postsCol.snapshotChanges().pipe(
       map(actions => actions.map(a => {
-      
+
         //console.log((a.payload.doc.data().StartTime));
          //if(d<=a.payload.doc.data().StartTime){
           //  console.log(a.payload.doc.data().endtime);
-          
-             
-           
+
+
+
           const data = a.payload.doc.data() as Post;
         const id = a.payload.doc.id;
         return { id, ...data };
         //}
-        
+
       }
       ))
     );
@@ -325,11 +333,11 @@ export class ApptComponent implements OnInit {
     .then((doc)=>{
       if(doc.exists){
         this.mam_out=doc.data().maam_out;
-        
+
       }
     });
-    
-    
+
+
 
 
   }
