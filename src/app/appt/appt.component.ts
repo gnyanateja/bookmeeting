@@ -166,7 +166,7 @@ export class ApptComponent implements OnInit {
           this.afs.collection('users', ref => ref.where('name', '==', x.name)).get().forEach(
             actions => actions.forEach(a => {
                   var mail=a.data().email;
-                  var dT=x.day+"/"+x.month+"/"+x.year;
+                  var dT=x.day+"/"+(x.month+1)+"/"+x.year;
                   var sT=x.hour+":"+x.minute;
                   this._myservice.mailAEvent({"mail":mail,"date":dT,"StartTime":sT})
                   .subscribe(
@@ -267,7 +267,7 @@ export class ApptComponent implements OnInit {
    this.afs.collection('users', ref => ref.where('name', '==', this.r.name)).get().forEach(
     actions => actions.forEach(a => {
           var mail=a.data().email;
-          var dT=this.r.day+"/"+this.r.month+"/"+this.r.year;
+          var dT=this.r.day+"/"+(this.r.month+1)+"/"+this.r.year;
           var sT=this.r.hour+":"+this.r.minute;
           this._myservice.mailREvent({"mail":mail,"date":dT,"StartTime":sT})
           .subscribe(
