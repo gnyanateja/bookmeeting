@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserService } from '../user.service';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 
 
@@ -308,6 +309,36 @@ export class ApptComponent implements OnInit {
     //afs.collection('items', ref => ref.where('size', '==', 'large'))
 
     var d = new Date(); // for now
+    var d1=d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear();
+    this.afs.collection('features').doc('todate').get().forEach(
+      actions => {
+            var y1=actions.data().todate;
+
+            var y=y1.toDate();
+            var d2=y.getDate()+"/"+(y.getMonth()+1)+"/"+y.getFullYear();
+            console.log(d2);
+            console.log(d1);
+            if(d1!=d2){
+              this.afs.collection('features').doc('todate').update({todate:d});
+              this._myservice.addResearch("hi")
+              .subscribe(
+              data => {
+                var y=data.valueOf();
+                console.log(y.valueOf());
+                this.afs.collection('appointments').add(data);
+              },
+              error => {
+                console.log('failure');
+              }
+            );
+            }
+
+            },
+
+          );
+
+
+
 
 
     this.postsCol = this.afs.collection('appointments',ref => ref.orderBy('StartTime'));

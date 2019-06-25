@@ -16,8 +16,8 @@ export class UserService {
   }
 
   RemoveEvent(body: any) {
-    
-    return this._http.post('http://localhost:5000/RemoveEvent', body, {
+
+    return this._http.post('https://bookcalender.herokuapp.com/RemoveEvent', body, {
       observe: 'body'
     });
   }
@@ -30,6 +30,12 @@ export class UserService {
 
   creatEvent(body: any){
     return this._http.post('https://bookcalender.herokuapp.com/creatEvent', body, {
+      observe: 'body'
+    });
+  }
+
+  addResearch(body: any){
+    return this._http.post('http://localhost:5000/addResearch', body, {
       observe: 'body'
     });
   }
@@ -47,7 +53,7 @@ export class UserService {
     });
   }
 
- 
+
 
 
 }
