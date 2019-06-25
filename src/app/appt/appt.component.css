@@ -3,9 +3,13 @@
     font-size: 130%;
     color: aliceblue;
     align-content: center;
+}
 
+#upper{
+padding-bottom: 10%;
 
 }
+
 
 #st1{
 
@@ -115,9 +119,9 @@ height: 4%;
 padding-bottom: 5%;
 z-index: 1;
 left: 12%;
-background-color:black;
+background-color:red;
 color: aliceblue;
-border-color: black;
+border-color:red;
 font-size: 130%;
 
 }
