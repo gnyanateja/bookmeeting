@@ -317,8 +317,7 @@ export class ApptComponent implements OnInit {
 
             var y=y1.toDate();
             var d2=y.getDate()+"/"+(y.getMonth()+1)+"/"+y.getFullYear();
-            console.log(d2);
-            console.log(d1);
+
             if(d1!=d2){
               this.afs.collection('features').doc('todate').update({todate:d});
               const time=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" 5:40 AM"
@@ -329,7 +328,7 @@ export class ApptComponent implements OnInit {
 
                 while(data.length!=0){
 
-                  this.afs.collection('appointments').add(data.pop());
+                this.afs.collection('appointments').add(data.pop());
                 }
               },
               error => {
