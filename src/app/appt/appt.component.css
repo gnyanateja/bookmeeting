@@ -5,10 +5,7 @@
     align-content: center;
 }
 
-#upper{
-padding-bottom: 10%;
 
-}
 
 
 #st1{
@@ -115,7 +112,7 @@ body{
 #tt2{
 position: fixed;
 width: 80%;
-height: 4%;
+height: 6%;
 padding-bottom: 5%;
 z-index: 1;
 left: 12%;
@@ -130,7 +127,7 @@ font-size: 130%;
 #tt31{
     position: fixed;
     width: 20%;
-    height: 4%;
+    height: 6%;
     padding-bottom: 5%;
     left: 0%;
     z-index: 2;
@@ -145,7 +142,7 @@ font-size: 130%;
 #tt3{
 position: fixed;
 width: 20%;
-height: 4%;
+height: 6%;
 padding-bottom: 5%;
 left: 80%;
 z-index: 2;
