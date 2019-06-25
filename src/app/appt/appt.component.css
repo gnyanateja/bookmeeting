@@ -52,7 +52,7 @@ padding-bottom: 10%;
     position: relative;
     box-sizing: content-box;
     color: aliceblue;
-    left:-3%;
+    left:-5%;
     font-size: 70%;
   }
 
@@ -65,7 +65,7 @@ padding-bottom: 10%;
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
-    left: 6%;
+    left: 4%;
     font-size: 70%;
     color: aliceblue;
   }
@@ -74,7 +74,7 @@ padding-bottom: 10%;
     background-color: rgb(255, 94, 0);
     box-sizing: content-box;
     position: relative;
-    left: 12%;
+    left: 9%;
     font-size: 70%;
     color: aliceblue;
   }
@@ -84,7 +84,7 @@ padding-bottom: 10%;
     box-sizing: content-box;
     font-size: 70%;
     position: relative;
-    left: 20%;
+    left: 15%;
     color: aliceblue;
   }
 
@@ -119,9 +119,9 @@ height: 4%;
 padding-bottom: 5%;
 z-index: 1;
 left: 12%;
-background-color:red;
+background-color:black;
 color: aliceblue;
-border-color:red;
+border-color:black;
 font-size: 130%;
 
 }
