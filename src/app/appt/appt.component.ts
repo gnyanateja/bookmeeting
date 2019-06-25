@@ -45,9 +45,10 @@ export interface User {
 export class ApptComponent implements OnInit {
   composeForm: FormGroup;
   title = 'appoint';
-  items=new Array();
+  items = new Array();
   n = 0;
   imp=0;
+
 
   postsCol: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
@@ -320,12 +321,16 @@ export class ApptComponent implements OnInit {
             console.log(d1);
             if(d1!=d2){
               this.afs.collection('features').doc('todate').update({todate:d});
-              this._myservice.addResearch("hi")
+              const time=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" 5:40 AM"
+              const time1=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" 11:40 PM"
+              this._myservice.addResearch({time1:time1,time:time})
               .subscribe(
-              data => {
-                var y=data.valueOf();
-                console.log(y.valueOf());
-                this.afs.collection('appointments').add(data);
+              (data:Post[]) => {
+
+                while(data.length!=0){
+
+                  this.afs.collection('appointments').add(data.pop());
+                }
               },
               error => {
                 console.log('failure');
